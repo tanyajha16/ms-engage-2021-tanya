@@ -1,0 +1,22 @@
+
+/* footer css */
+#layout-footer {
+  color: white;
+  background: #3c378aec;
+  padding: 5px 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; 
+  position: sticky;
+  height:10%;
+
+}
+  #layout-footer a 
+  {
+    color: white;
+    text-decoration: none;
+   }
+  #layout-footer .footer-nav ul 
+  {
+    list-style: none;
+   }

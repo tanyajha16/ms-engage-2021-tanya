@@ -1,0 +1,39 @@
+
+<header id="layout-header">
+    <nav>
+      
+        <div class="mini-logo">
+            <p >
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyE7rRD26lMbB_9AlAXwKYI2TSD7p8mbwHw39w_0IV7Qfth1Qrb7kDkQlgTuOpNP0R5Hs&usqp=CAU" height="40px",width="40px">
+                <a href='/'>
+                    Microsoft-teams
+                </a>
+            </p>
+        </div>
+    
+        <div class="auth-links">
+            <ul>
+                <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" height="40px" width="40px" margin="40px"/>
+                <% if (locals.user){ %>
+                <li>
+                    <a href="/users/profile/<%= user.id %>"><%= user.name %></a>
+                </li>
+                <li>
+                    <a href="/users/sign-out">Sign Out</a>
+                </li>
+                <% }else{ %>
+                <li>
+                    <a href="/users/sign-in">Sign In</a>
+                </li>
+                <li>
+                    <a href="/users/sign-up">Sign Up</a>
+                </li>
+        
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+ 
+
+
+</header>

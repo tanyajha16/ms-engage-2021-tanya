@@ -1,0 +1,76 @@
+<!-- <meta http-equiv="refresh" content="30" /> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/chat_box.css">
+<style>
+    .button{
+        border-radius: 12px;
+        padding: 5px 12px;
+        background-color: #ffffff;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border-radius: 12px;
+}
+</style>
+<% if(locals.user){ %>
+  <div id="home-container">
+      <section id="left-div">
+          <div id="general-channel" style="border-radius: 10%">
+              <h2 style="color: aliceblue; text-align: center;">GC</h2>
+              <h5 style="color: aliceblue;text-align: center;"> general-channel</h5>
+              <a href ="/chatapp" style="margin-left: 0.5rem;"><button type="button" class="btn btn-outline-success" style="padding: 5px 12px; margin: 1rem 0 0 0.5rem;"><i class="fas fa-paper-plane"></i> Chat</button></a>
+              <a href ="http://localhost:3000/" style="margin-left: 0.5rem;"><button type="button" class="btn btn-outline-success" style="padding: 5px 12px; margin: 1rem 0 0 0.5rem;"><i class="fas fa-video"></i> Video <br> call</button></a>
+          </div>
+      </section>
+    <section id="feed-posts" style="text-align: center;">
+            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif; text-decoration: underline;">Announcement Channel</h2>
+            <div class="container" style="margin-top: 1rem;">
+                <form action="/posts/create" id="new-post-form" method="POST">
+                    <textarea name="content" placeholder="Type Here..." required style="margin-left: 3rem; max-width: 820px; margin: 0px auto;"></textarea><br><br>
+                    <input type="submit" value="Post" class="button">
+                </form>
+            </div>
+            <div id="posts-list-container">
+                <ul>
+                    <% for(post of posts){ %>
+                        
+                    <%- include('_post') -%>
+                        
+                    <%} %>
+                </ul>
+            </div>
+     </section>
+        <section id="user-friends">
+            <div id="participants">
+            <h2 style="text-align: center; color: rgba(80, 67, 165, 0.918);">Participants</h2>
+            <div id="participants_name">
+            <% for(u of all_users){%>
+                <p>
+                    <img src="https://i.pinimg.com/474x/76/4d/59/764d59d32f61f0f91dec8c442ab052c5.jpg" height="30px" width="30px"/>
+                    <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+                </p>
+            <% } %>
+            </div>
+            </div>
+        </section>
+
+  </div>
+<% }%>
+
+<!-- importing this script for creating the comments -->
+<script src="/js/home_post_comments.js" ></script>
+<script src="/js/home_posts.js"></script>
+
+<!-- CHANGE :: import the script file for toggle likes, also run it over for the already present posts and comments on the page -->
+<script src="js/toggle_likes.js"></script>
+<script>
+    $('.toggle-like-button').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>
+

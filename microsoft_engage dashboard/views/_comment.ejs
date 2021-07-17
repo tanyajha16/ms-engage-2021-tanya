@@ -1,0 +1,43 @@
+<style>
+    .button{
+        border-radius: 12px;
+        padding: 5px 12px;
+    }
+    .button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border-radius: 12px;
+}
+</style>
+
+<li id="comment-<%= comment._id %>">
+        <p>
+            <% if (locals.user && locals.user.id == comment.user.id){ %>
+            
+            <% } %>
+            <small style="float: right; margin-right: 7rem;">
+                <button class="button"><a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>" style="color: red;">X</a></button>
+            </small>
+            <div style="border: 1px solid green; margin: auto; width: 60%; padding: 10px; border-radius: 10px;">
+            <%= comment.content %>
+            <br>
+            <small>
+                
+                <%= comment.user.name %>
+            </small>
+            <br>
+            <!-- CHANGE :: display the likes of this comment, if the user is logged in, then show the link to toggle likes, else, just show the count -->
+            <!-- study about the data attribute -->
+            <small>
+                <% if (locals.user){ %>
+                    <button class="button"><a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+                            <%= comment.likes.length %> Likes
+                    </a></button>
+                <% }else{ %>
+                    <%= comment.likes.length %> Likes
+                <% } %>
+            </small>
+        </div>
+        </p>  
+
+</li>

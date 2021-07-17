@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="/css/user_profile.css">
+
+<div class='profile-container'>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREISsiPRcwBjquJjSWerZAzcRpyK0YozMNYdgQfAmthmQx9I339DRL2K05a2Pht7WCWK4&usqp=CAU" alt="<%= profile_user.name %>" width="100">
+
+<br>
+
+<% if(user.id == profile_user.id){ %>
+    <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">
+        <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required><br><br>
+        <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required><br><br>
+
+        <br><br>
+        <input type="submit"  value="Update">
+    </form>
+    
+<%}else{%>    
+    
+    <div class="user-div" style="margin: 2rem 0 0 7rem; font-size: larger;">
+        <p style="color: white;"><%= profile_user.name %></p><br><br>
+        <p style="color: white;"><%= profile_user.email %></p>
+    </div>
+<%} %> 
+</div>

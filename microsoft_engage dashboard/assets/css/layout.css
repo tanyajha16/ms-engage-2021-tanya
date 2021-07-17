@@ -1,0 +1,9 @@
+
+/* layout page css  */
+body
+ {
+  margin: 0;
+  }
+  body #layout-main {
+    height: 82%;
+    overflow: auto; }
